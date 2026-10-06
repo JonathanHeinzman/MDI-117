@@ -10,14 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = TaskListViewModel()
     @State private var newTaskTitle: String = ""
-    
+
     var body: some View {
         NavigationStack{
-            VStack{
-                HStack{
+            VStack {
+                HStack {
                     TextField("New task...", text: $newTaskTitle)
                         .textFieldStyle(.roundedBorder)
-                    Button("Add"){
+                    Button("Add") {
                         viewModel.addTask(title: newTaskTitle)
                         newTaskTitle = ""
                     }
@@ -25,9 +25,9 @@ struct ContentView: View {
                 }
                 .padding()
                 
-                List{
+                List {
                     ForEach(viewModel.tasks) { task in
-                        HStack{
+                        HStack {
                             Text(task.title)
                             Spacer()
                             if task.isCompleted {
@@ -35,7 +35,7 @@ struct ContentView: View {
                             }
                         }
                         .contentShape(Rectangle())
-                        .onTapGesture{
+                        .onTapGesture {
                             viewModel.toggleCompletion(id: task.id)
                         }
                     }
@@ -52,7 +52,6 @@ struct ContentView: View {
         }
     }
 }
-
 
 #Preview {
     ContentView()

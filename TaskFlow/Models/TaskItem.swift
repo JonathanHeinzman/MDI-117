@@ -1,8 +1,8 @@
 //
 //  TaskItem.swift
-//  TaskFlow
+//  TaskFlow-Ch9
 //
-//  Created by Jonathan Heinzman on 9/30/26.
+//  Created by Andres de la Cruz on 9/30/26.
 //
 
 import Foundation
@@ -10,6 +10,11 @@ import Foundation
 struct TaskItem: Identifiable, Equatable {
     var id: UUID = UUID()
     var title: String
-    var isCompleted:Bool = false
+    var isCompleted: Bool = false
+    var isFavorite: Bool = false
+    var priority: Priority = .medium
 }
 
+enum Priority: String, CaseIterable {
+    case low, medium, high
+}
